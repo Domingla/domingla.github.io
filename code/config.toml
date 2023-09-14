@@ -1,0 +1,4 @@
+baseURL = 'https://domingla.github.io/'
+languageCode = 'en-us'
+title = 'Domingla'
+theme = 'personal-web'
