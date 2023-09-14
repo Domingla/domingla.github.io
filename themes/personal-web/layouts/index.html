@@ -1,3 +1,5 @@
+{{ $js := resources.Get "js/bundle.js" | js.Build (dict "target" "es2015") | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" defer></script>
 {{ partial "header" .}}
 
 {{ if .Site.Params.rendererSafe }}
@@ -8,7 +10,7 @@
 
 {{ .Content }}
 
-<h2>{{ .Site.Params.main.latestPublishHeader | default "My Latest Job" }}</h2>
+<!-- <h2>{{ .Site.Params.main.latestPublishHeader | default "My Latest Job" }}</h2>
   {{ $pages := where site.RegularPages "Type" "in" .Site.Params.mainSections }}
   {{ range first 1 $pages }}
     {{ if in .Site.Params.mainSections "portfolio" }}
@@ -16,6 +18,38 @@
     {{ else if in .Site.Params.mainSections "post" }}
       {{ partial "post/item" .}}
     {{ end }}
-  {{ end }}
+  {{ end }} -->
+
+<div>
+  <div id="main">
+    <div id="stage">
+      <div id="snake">
+        <div></div>
+      </div>
+
+      <div id="food">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div id="score-panel">
+      <div>
+        SCORE:<span id="score">0</span>
+      </div>
+      <div>
+        level:<span id="level">1</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div id="button">
+    <a id="remake">菜狗重开</a>
+  </div> -->
+
+  <div class="canvasContainer"></div>
+</div>
 
 {{ partial "footer" .}}
